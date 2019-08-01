@@ -1,7 +1,10 @@
 <template>
   <main>
-    <p>Center: {{ center }}</p>
-    <p>Zoom: {{ zoom }}</p>
+    <div class="text-container">
+      <p>Center: {{ center }}</p>
+      <p>Zoom: {{ zoom }}</p>
+    </div>
+
     <div id="map"></div>
   </main>
 </template>
@@ -12,8 +15,9 @@ import mapboxgl from "mapbox-gl";
 export default {
   name: "MapboxMap",
   data() {
+    // Set initial data, this.createMap() configures event listeners that update data based on user interaction
     return {
-      center: [-93.1247, 44.9323],
+      center: [-93.1247, 44.9323], // St. Paul
       zoom: 10.5
     };
   },
@@ -30,7 +34,7 @@ export default {
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         minzoom: 5,
-        center: this.center, // St. Paul
+        center: this.center, // use initial data as default
         zoom: this.zoom,
         hash: true // sets url's hash to #zoom/lat/lng
       });
@@ -53,5 +57,14 @@ export default {
 #map {
   height: 400px;
   width: 100%;
+}
+
+.text-container {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  margin: 0 auto; /* center text container */
 }
 </style>
