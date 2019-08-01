@@ -1,5 +1,9 @@
 <template>
-  <div id="map"></div>
+  <main>
+    <p>Center: {{ center }}</p>
+    <p>Zoom: {{ zoom }}</p>
+    <div id="map"></div>
+  </main>
 </template>
 
 <script>
@@ -9,8 +13,8 @@ export default {
   name: "MapboxMap",
   data() {
     return {
-      center: null,
-      zoom: null
+      center: [-93.1247, 44.9323],
+      zoom: 10.5
     };
   },
   mounted() {
@@ -19,23 +23,25 @@ export default {
   },
   methods: {
     createMap() {
-      // instantiate map
+      // instantiate map.  this method runs once after the vue component is mounted to the dom
       this.map = new mapboxgl.Map({
         accessToken:
           "pk.eyJ1IjoiYmZyaWVkbHkiLCJhIjoiY2p4bHd1OXdpMGFycDN0bzFiNWR4d2VyNyJ9.3hQjvgyoPoCuRx-Hqr_BFQ",
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         minzoom: 5,
-        center: [-93.1247, 44.9323], // St. Paul
-        zoom: 10.5,
+        center: this.center, // St. Paul
+        zoom: this.zoom,
         hash: true // sets url's hash to #zoom/lat/lng
       });
 
       // set mapbox event listeners to update Vue component data
       this.map.on("move", () => {
+        // set the vue instance's data.center to the results of the mapbox instance method for getting the center
         this.center = this.map.getCenter();
       });
       this.map.on("zoom", () => {
+        // set the vue instance's data.zoom to the results of the mapbox instance method for getting the zoom
         this.zoom = this.map.getZoom();
       });
     }

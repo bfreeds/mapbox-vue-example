@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 class="title">Mapbox Map</h1>
+    <h2 class="title">VueJS Mapbox Example</h2>
     <MapboxMap />
   </div>
 </template>
