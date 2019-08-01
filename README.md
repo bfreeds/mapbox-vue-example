@@ -18,7 +18,7 @@ The `vue.config.js` file configures the vue build to use the correct url path fo
 There are existing component libraries available for integrating Mapbox with VueJS:  
  - [phegman/vue-mapbox-gl](https://github.com/phegman/vue-mapbox-gl)  
 
- This follows the approach [Tristen Brown recommends for using Mapbox with React](https://blog.mapbox.com/mapbox-gl-js-react-764da6cc074a), where he makes the case for not using a pre-defined component, which would require a package maintaner to keep it up to date with changing dependencies.  
+ This follows the approach [Tristen Brown recommends for using Mapbox with React](https://blog.mapbox.com/mapbox-gl-js-react-764da6cc074a), where he makes the case for not using a pre-defined component, which would require a package maintainer to keep it up to date with changing dependencies.  
  
  Using Mapbox directly allows you to always use an up-to-date version of Mapbox, and all the features it includes.  
 ##### Implementation
